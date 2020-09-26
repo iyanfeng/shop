@@ -1,0 +1,19 @@
+/* pages/cart/index.wxss */
+.adress-btn{
+    padding:20rpx;
+}
+.adress-btn>button{
+    width: 60%;
+    font-weight: 400;
+}
+.address-detail{
+    display: flex;
+    padding: 20rpx;
+    border-bottom: 1rpx solid var(--theme);
+}
+.a-detail-l{
+    flex:5;
+}
+.a-detail-r{
+    flex:2;
+}

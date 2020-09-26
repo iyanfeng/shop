@@ -1,0 +1,35 @@
+.tab-item {
+    display: flex;
+    border-bottom: 1rpx solid #cccc;
+}
+
+.t-item-l {
+    flex: 2;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.t-item-r {
+    flex: 3;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.ti-l-image {
+    width: 70%;
+}
+
+.ti-r-price {
+    color: var(--themeColor);
+    font-size: 32rpx;
+}
+
+.ti-r-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

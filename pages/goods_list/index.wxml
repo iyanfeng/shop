@@ -1,0 +1,21 @@
+<view class="good-list">
+    <searchInput></searchInput>
+    <!-- 监听自定义事件 -->
+    <tabs tabList = "{{tabList}}" bind:changeTab="changeTab">
+        <!-- 综合 -->
+        <block wx:if="{{tabList[0].active}}">
+            <navigator url="/pages/goods_detail/index?goods_id={{item.goods_id}}" class="tab-item" wx:for="{{goodsList}}" wx:key="goods_id">
+                <view class="t-item-l">
+                    <image mode="widthFix" class="ti-l-image" 
+                    src="{{item.goods_small_logo?item.goods_small_logo:'../../icons/defaut.png'}}" />
+                </view>
+                <view class="t-item-r">
+                    <view class="ti-r-name">{{item.goods_name}}</view>
+                    <view class="ti-r-price">￥{{item.goods_price}}</view>
+                </view>
+            </navigator>
+        </block>
+        <block wx:elif="{{tabList[1].active}}">2</block>
+        <block wx:elif="{{tabList[2].active}}">3</block>
+    </tabs>
+</view>

@@ -1,0 +1,15 @@
+<!--pages/cart/index.wxml-->
+<view class="cart-address">
+    <view class="adress-btn" wx:if="{{!address.userName}}">
+        <button bindtap="handleChooseAdress" type="primary" plain="true">获取收货地址</button>
+    </view>
+    <view class="address-detail" wx:else>
+        <view class="a-detail-l">
+            <view class="ad-left-name">收件人：{{address.userName}}</view>
+            <view class="ad-left-address">{{address.totalAddress}}</view>
+        </view>
+        <view class="a-detail-r">
+            {{address.telNumber}}
+        </view>
+    </view>
+</view>

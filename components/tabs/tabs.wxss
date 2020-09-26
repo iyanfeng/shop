@@ -1,0 +1,14 @@
+.tab-item{
+    display: flex;
+}
+.tab-title{
+    flex:1;
+    color: #666;
+    height: 80rpx;
+    text-align: center;
+    line-height: 80rpx;
+}
+.tab-title.active{
+    color: var(--themeColor);
+    border-bottom: 5rpx solid var(--themeColor);
+}

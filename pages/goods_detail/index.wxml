@@ -1,0 +1,48 @@
+
+<view class="swiper-container">
+    <swiper class="detail-swiper" circular="true" autoplay="true" indicator-dots="true">
+        <swiper-item bindtap="handlePreviewImg" data-url="{{item.pics_mid}}"
+                    class="d-swiper-item" wx:for="{{dataObj.pics}}" wx:key="pics_id">
+            <image class="ds-item-image" mode="widthFix" src="{{item.pics_mid}}" />
+        </swiper-item>
+    </swiper>
+
+    <view class="detail-price">￥{{dataObj.goods_price}}</view>
+    <view class="detai-name">
+        <view class="name-l">{{dataObj.goods_name}}</view>
+        <view class="name-r">
+            <text></text>
+            <text>收藏</text>
+        </view>
+    </view>
+
+    <view class="detail-content">
+        <view class="dc-title">图文详情</view>
+        <view class="dc-content">
+            <rich-text nodes="{{dataObj.goods_introduce}}"></rich-text>
+        </view>
+    </view>
+
+    <view class="detail-tools">
+        <view class="tool-item ">
+            <view class="ti-kf-icon iconfont icon-shopcar"></view>
+            <view class="ti-kf-text">联系客服</view>
+            <button open-type="contact"></button>
+        </view>
+        <view class="tool-item">
+            <view class="ti-fx-icon iconfont icon-shopcar"></view>
+            <view class="ti-fx-text">分享</view>
+            <button open-type="share"></button>
+        </view>
+        <navigator open-type="switchTab" url="/pages/cart/index" class="tool-item">
+            <view class="ti-gwc-icon iconfont icon-shopcar"></view>
+            <view class="ti-gwc-text">购物车</view>
+        </navigator>
+        <view class="tool-item item-car" bindtap="handleTocar">
+            加入购物车
+        </view>
+        <view class="tool-item item-buy">
+            立即购买
+        </view>
+    </view>
+</view>

@@ -1,0 +1,17 @@
+@import './styles/iconfont.wxss';
+/* 小程序不支持* */
+view,text,swiper,swiper-item,textarea,image,navigator{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+page {
+    /* 定义页主题的颜色 */
+    --themeColor:#eb4450;
+    /* 统一定义字体大小，小程序规定屏幕宽为750rpx，假设设计稿是375px  则1px=2rpx */
+    font-size: 28rpx;
+}
+image{
+  width: 100%;
+}
