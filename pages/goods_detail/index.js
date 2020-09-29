@@ -7,7 +7,9 @@ Page({
    */
   data: {
     dataObj: {},
-    goods_id:null
+    goods_id:null,
+    isCollect: false,
+    collectArr:[]
   },
   goodInfo:{},
   /**
@@ -16,6 +18,20 @@ Page({
   onLoad: function (options) {
     this.data.goods_id = options.goods_id
     this.getDetailData()
+    console.log('onLoad',options)
+  },
+  onShow: function(){
+    const pages = getCurrentPages()
+    const {goods_id} = pages[pages.length-1]['options']
+    const collected = wx.getStorageSync('collect')||[]
+    if (collected.length>0) {
+      const isCollect = collected.some((item,index)=>{
+        return item.goods_id === goods_id
+      })
+      this.setData({
+        isCollect
+      })
+    }
   },
   //获取页面数据
   async getDetailData () {
@@ -31,7 +47,8 @@ Page({
         goods_name: res.goods_name,
         goods_price:res.goods_price,
         goods_introduce:res.goods_introduce,
-        pics:res.pics
+        pics:res.pics,
+        goods_small_logo:res.goods_small_logo
       }
     })
     this.goodInfo = this.data.dataObj
@@ -54,6 +71,7 @@ Page({
     })
     if (index === -1) {//不存在
       this.goodInfo['num'] = 1 //添加点击次数
+      this.goodInfo['checked'] = true //商品是否选中，购物车页面用到
       cart.push(this.goodInfo)
     }else{
       cart[index]['num']++
@@ -67,5 +85,32 @@ Page({
       icon: 'success',
       mask: true
     })
+  },
+  //点击收藏
+  handleCollect(){
+    let isCollect = !this.data.isCollect
+    this.setData({
+      isCollect
+    })
+    //存入缓存
+    const collected = wx.getStorageSync('collect')||[]
+    if (isCollect) { //关注
+      this.goodInfo['isCollect'] = isCollect
+      collected.push(this.goodInfo)
+      wx.showToast({
+        title: '收藏成功',
+        icon: 'success'
+      })
+    }else{ //取关
+      const index =  collected.findIndex((item,index)=>{
+        return item.goods_id === this.data.goods_id
+      })
+      collected.splice(index,1)
+      wx.showToast({
+        title: '取消成功',
+        icon: 'success'
+      })
+    }
+    wx.setStorageSync('collect', collected )
   }
 })

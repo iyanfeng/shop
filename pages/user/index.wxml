@@ -1,2 +1,84 @@
-<!--pages/user/index.wxml-->
-<text>pages/user/index.wxml</text>
+<view class="user-info-wrap">
+    <view class="ui-img-row" wx:if="{{userInfo.avatarUrl}}">
+        <image class="ui-img-bg" src="{{userInfo.avatarUrl}}" mode="widthFix"/>
+        <view class="ui-img-text">
+            <image class="ui-img-text-bg" src="{{userInfo.avatarUrl}}" />
+            <view class="ui-img-text-info">{{userInfo.nickName}}</view>
+        </view>
+    </view>
+    <navigator url="/pages/login/index" wx:else class="ui-btn">
+        <button class="btn" type="primary" plain="{{true}}">
+            登录
+        </button>
+    </navigator>
+</view>
+
+<view class="userinfo-content-wrap">
+    <view class="userinfo-content-main">
+        <view class="ui-content-nums ui-content-item">
+            <navigator class="uic-nums-shop ui-content-numitem">
+                <view class="shop-num num">0</view>
+                <view class="shop-text">收藏的店铺</view>
+            </navigator>
+            <navigator url="/pages/collect/index" class="uic-nums-goods ui-content-numitem">
+                <view class="goods-num num">{{collectNum}}</view>
+                <view class="goods-text">收藏的商品</view>
+            </navigator>
+            <navigator class="uic-nums-follow ui-content-numitem">
+                <view class="follow-num num">0</view>
+                <view class="follow-text">关注的商品</view>
+            </navigator>
+            <navigator class="uic-nums-my ui-content-numitem">
+                <view class="my-num num">0</view>
+                <view class="my-text">我的足迹</view>
+            </navigator>
+        </view>
+
+        <!-- 我的订单 -->
+        <view class="ui-content-order">
+            <view class="uic-order-title">我的订单</view>
+            <view class="uic-order-items">
+                <navigator  url="/pages/order/index?type=1" class="uic-order-all ui-order-item">
+                    <view class="all-icon icon iconfont icon-shopcar"></view>
+                    <view class="all-text">全部订单</view>
+                </navigator>
+                <navigator  url="/pages/order/index?type=2" class="uic-order-unpay ui-order-item">
+                    <view class="unpay-icon icon iconfont icon-shopcar"></view>
+                    <view class="unpay-text">待付款</view>
+                </navigator>
+                <navigator  url="/pages/order/index?type=3" class="uic-order-unrecieve ui-order-item">
+                    <view class="unrecieve-icon icon iconfont icon-shopcar"></view>
+                    <view class="unrecieve-text">待收货</view>
+                </navigator>
+                <navigator class="uic-order-back ui-order-item">
+                    <view class="back-icon icon iconfont icon-shopcar"></view>
+                    <view class="back-text">退款/退货</view>
+                </navigator>
+            </view>
+        </view>
+        <!-- 收货地址管理 -->
+        <navigator class="ui-content-address ui-content-item">收货地址管理</navigator>
+        
+        <view class="ui-content-item ui-content-appInfo">
+            <!-- 联系客服 -->
+            <navigator class="ui-content-service ui-appInfo-item">
+                <view>联系客服</view>
+                <view>400-818-999</view>
+            </navigator>
+            <!-- 意见反馈 -->
+            <navigator url="/pages/feedback/index" class="ui-content-advice ui-appInfo-item">
+                <view>意见反馈</view>
+            </navigator>
+
+            <!-- 关于我们 -->
+            <navigator class="ui-content-about">
+                <view>关于我们</view>
+            </navigator>
+        </view>
+
+        <navigator class="ui-content-recommend ui-content-item">
+            把应用推荐给其他人
+        </navigator>
+    </view>
+    
+</view>

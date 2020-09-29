@@ -1,1 +1,63 @@
 /* pages/feedback/index.wxss */
+page{
+    background-color: #f0f0f0;
+    color: #6666;
+}
+.ft-qustion-title{
+    padding: 10rpx 5rpx;
+}
+.ft-qustion-items{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10rpx 10rpx 0 20rpx;
+}
+.ft-qustion-item{
+    width: 30%;
+    padding: 20rpx;
+    background-color: #fff;
+    margin:10rpx;
+    text-align: center;
+    font-size: 24rpx;
+}
+.ft-qustion-content{
+    background-color: #fff;
+    margin: 20rpx 10rpx 10rpx;
+    padding-bottom: 20rpx;
+}
+.ftq-content-text{
+    padding: 10rpx;
+    width: 100%;
+}
+.ft-qustio-tool{
+    display: flex;
+    flex-wrap: wrap;
+}
+.ft-qustio-tool>.ftq-content-btn{
+    width: 90rpx;
+    height: 90rpx;
+    font-size: 40rpx;
+    text-align: center;
+    line-height: 90rpx;
+    color: #ccc;
+    font-weight: 400;
+    margin:0 20rpx 0 20rpx;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+.ftq-content-img{
+    margin-right: 20rpx;
+}
+.ft-qustion-submit{
+    display: flex;
+    justify-content: flex-end;
+}
+.ft-qustion-submit>button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30% !important;
+    margin-right: 10rpx !important;
+    background-color: var(--themeColor);
+    color: #fff;
+    font-weight: 400;
+}

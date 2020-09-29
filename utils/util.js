@@ -58,8 +58,42 @@ const asyncOpenSetting = ()=>{
     })
   })
 }
+/**
+ * Promise 形式得showModal
+ */
+const asyncshowModal = ({content})=>{
+  return new Promise((resolve,reject)=>{
+    wx.showModal({
+      title: '提示',
+      content: content,
+      success (res) {
+        resolve(res)
+      },
+      fail(error){
+        reject(error)
+      }
+    })
+  })
+}
+/**
+ * Promise形式得login
+ */
+const asyncLogin = ()=>{
+  return new Promise((resolve,reject)=>{
+    wx.login({
+      success (res) {
+        resolve(res)
+      },
+      fail(error){
+        reject(error)
+      }
+    })
+  })
+}
 module.exports = {
   asyncGetSetting,
   asyncChooseAddress,
-  asyncOpenSetting
+  asyncOpenSetting,
+  asyncshowModal,
+  asyncLogin
 }

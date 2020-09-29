@@ -1,0 +1,18 @@
+.upImg-container{
+    position: relative;
+}
+.upImg-container>.icon{
+    position: absolute;
+    top: -20rpx;
+    right: -30rpx;
+    z-index: 10;
+}
+.upImg-container{
+    width: 90rpx;
+    height: 90rpx;
+    border-radius:15rpx;
+}
+.upImg-container>.image{
+    width: 100%;
+    height: 100%;
+}

@@ -1,2 +1,25 @@
-<!--pages/collect/index.wxml-->
-<text>pages/collect/index.wxml</text>
+<view class="collect-wrap">
+    <tabs tabList="{{tabList}}" bind:changeTab="changeTab">
+       <view class="collect-goods" wx:if="{{tabList[0]['active']}}">
+            <view class="cg-category">
+                <view class="cg-category-item active">全部</view>
+                <view class="cg-category-item">正在热映</view>
+                <view class="cg-category-item">即将上线</view>
+            </view>
+            <view class="cg-conetent">
+                <navigator url="/pages/goods_detail/index?goods_id={{item.goods_id}}" class="cg-content-item" wx:for="{{collect}}" wx:key="goods_id">
+                    <view class="cgc-item-l">
+                        <image src="{{item.goods_small_logo?item.goods_small_logo:'../../icons/defaut.png'}}" mode="widthFix" />
+                    </view>
+                    <view class="cgc-item-r">
+                        <view class="cgc-ritem-text">{{item.goods_name}}</view>
+                        <view class="cgc-ritem-price">￥{{item.goods_price}}</view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+        <block wx:if="{{tabList[1]['active']}}">1</block>
+        <block wx:if="{{tabList[2]['active']}}">2</block>
+        <block wx:if="{{tabList[3]['active']}}">3</block>
+    </tabs>
+</view>

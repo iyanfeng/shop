@@ -4,14 +4,14 @@
     <!-- 轮播图 -->
     <swiper class="home-swiper" autoplay="true" indicator-dots="true" circular="true">
         <swiper-item wx:for="{{swiperList}}" wx:key="goods_id" class="h-swiper-item">
-            <navigator>
+            <navigator url="/pages/goods_detail/index?goods_id={{item.goods_id}}">
                 <image src="{{item.image_src}}" mode="widthFix" class="h-swiper-image" />
             </navigator>
         </swiper-item>
     </swiper>
     <!-- 导航栏 -->
     <view class="nav">
-        <navigator wx:for="{{navData}}" wx:key="name" class="n-navigator">
+        <navigator url="/pages/category/index" open-type="switchTab" wx:for="{{navData}}" wx:key="name" class="n-navigator">
             <image src="{{item.image_src}}" mode="widthFix" class="n-navigator-image" />
         </navigator>
     </view>
@@ -26,6 +26,7 @@
             </view>
             <view class="f-item-navgators">
                 <navigator class="fi-navgator" 
+                           url="{{'/pages/goods_list/index?query='+item2.name}}"
                            wx:for="{{item1.product_list}}" 
                            wx:for-item="item2"
                            wx:for-index="index2" wx:key="name">

@@ -1,13 +1,16 @@
 // pages/search/index.js
+import { getRequest } from '../../request/index'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    searchList:[],
+    isHidden:true,
+    inputValue:''
   },
-
+  timer:null,
   /**
    * 生命周期函数--监听页面加载
    */
@@ -28,39 +31,44 @@ Page({
   onShow: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  //输入框值改变了 
+  handleInput(e){
+    const {value} = e.detail
+    if (value.trim()) { //空格也转成true,因此要去掉空格
+      this.setData({
+        inputValue:value,
+        isHidden:false
+      })
+      if (this.timer) clearInterval(this.timer)
+      this.timer = setTimeout(() => {
+        this.searchIng(value)
+      }, 1000);
+    }else{
+      if (this.timer) clearInterval(this.timer)
+      this.setData({
+        isHidden:true,
+        searchList :[],
+        inputValue:''
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  async searchIng(value){
+    const res = await getRequest({
+      url:'/goods/qsearch',
+      data:{
+        query: value
+      }
+    })
+    this.setData({
+      searchList:res
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //处理取消
+  handleCancle(){
+    this.setData({
+      isHidden:true,
+      searchList:[],
+      inputValue:''
+    })
   }
 })

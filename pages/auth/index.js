@@ -1,4 +1,6 @@
 // pages/auth/index.js
+import utils from '../../utils/util'
+import {getRequest} from '../../request/index'
 Page({
 
   /**
@@ -16,51 +18,27 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 获取到用户信息---取不到 支付只能企业appid才可以
+  async handlegetUserInfo(event){
+    try{
+      const {encryptedData,rawData,iv,signature} = event.detail
+      const loginRes = await utils.asyncLogin()
+      const {code} = loginRes
+      const params = {encryptedData,rawData,iv,signature,code}
+      console.log(params)
+      const resGettoken = await getRequest({
+        url:'/users/wxlogin',
+        data:params,
+        method:'POST'
+      })
+      console.log(resGettoken)
+    }catch(error){
+      console.log(error)
+    }
   }
 })

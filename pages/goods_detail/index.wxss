@@ -33,6 +33,9 @@
     align-items: center;
     border-left: 1rpx solid #dedede;
 }
+.icon-shoucang2{
+    color: var(--themeColor);
+}
 .detail-content{
     padding-bottom: 90rpx;
 }
@@ -66,9 +69,11 @@
     font-size: 12rpx;
     cursor: pointer;
 }
-.tool-item>button{
+.tool-item > button{
     position: absolute;
-    width: 100%;
+    top: 0;
+    left: 0;
+    width: 100% !important;
     height: 100%;
     opacity: 0;
 }

@@ -10,8 +10,8 @@
     <view class="detail-price">￥{{dataObj.goods_price}}</view>
     <view class="detai-name">
         <view class="name-l">{{dataObj.goods_name}}</view>
-        <view class="name-r">
-            <text></text>
+        <view class="name-r" bindtap="handleCollect">
+            <text class="iconfont {{isCollect?'icon-shoucang2':'icon-shoucang'}}"></text>
             <text>收藏</text>
         </view>
     </view>
@@ -24,13 +24,13 @@
     </view>
 
     <view class="detail-tools">
-        <view class="tool-item ">
-            <view class="ti-kf-icon iconfont icon-shopcar"></view>
+        <view class="tool-item">
+            <view class="ti-kf-icon iconfont icon-kefu"></view>
             <view class="ti-kf-text">联系客服</view>
             <button open-type="contact"></button>
         </view>
         <view class="tool-item">
-            <view class="ti-fx-icon iconfont icon-shopcar"></view>
+            <view class="ti-fx-icon iconfont icon-share"></view>
             <view class="ti-fx-text">分享</view>
             <button open-type="share"></button>
         </view>

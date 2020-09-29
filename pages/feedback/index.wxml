@@ -1,2 +1,31 @@
-<!--pages/feedback/index.wxml-->
-<text>pages/feedback/index.wxml</text>
+<view class="feedback-wrap">
+    <tabs tabList="{{tabList}}" bind:changeTab="changeTab">
+        <view class="feedback-tab" hidden="{{!tabList[0].active}}">
+            <view class="ft-qustion">
+                <view class="ft-qustion-title">问题的种类</view>
+                <view class="ft-qustion-items">
+                    <view class="ft-qustion-item">功能建议</view>
+                    <view class="ft-qustion-item">购买遇到的问题</view>
+                    <view class="ft-qustion-item">性能问题</view>
+                    <view class="ft-qustion-item">其他</view>
+                </view>
+                <view class="ft-qustion-content">
+                    <textarea bindinput="handleInput" value="{{textValue}}" class="ftq-content-text" placeholder="请描述下你的问题"></textarea>
+                    <view class="ft-qustio-tool">
+                        <button bindtap="chooseImg" class="ftq-content-btn">+</button>
+                        <view class="ftq-content-img" wx:for="{{chooseImgs}}" wx:key="*this">
+                            <upImg src="{{item}}" bind:clearImg="clearImg" data-index="{{index}}"></upImg>
+                        </view>
+                    </view>
+                </view>
+                <view class="ft-qustion-submit">
+                    <button bindtap="handleSubmit">
+                        <icon type="success_no_circle" color='#fff'></icon>
+                        提交
+                    </button>
+                </view>
+            </view>
+        </view>
+        <view class="feedback-tab" hidden="{{!tabList[1].active}}">商品、商家投诉</view>
+    </tabs>
+</view>

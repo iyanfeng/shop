@@ -1,2 +1,17 @@
-<!--pages/search/index.wxml-->
-<text>pages/search/index.wxml</text>
+<viwe class="search-btns">
+    <input class="search-btns-input" 
+                value="{{inputValue}}" type='text' placeholder="请输入要搜索的商品名称" 
+                bindinput="handleInput" />
+    <button class="search-btns-btn" bindtap="handleCancle" hidden="{{isHidden}}">
+        取消
+    </button>
+</viwe>
+<view class="search-list">
+    <!-- <block wx:if="{{searchList.length != 0}}"> -->
+        <navigator wx:for="{{searchList}}" url="/pages/goods_detail/index?goods_id={{item.goods_id}}" 
+                class="s-list-item" wx:key="goods_id">
+            {{item.goods_name}}
+        </navigator>
+    <!-- </block> -->
+    <!-- <block wx:else>没有对应的搜索</block> -->
+</view>

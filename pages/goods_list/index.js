@@ -21,6 +21,7 @@ Page({
     }],
     goodsList:[],
     pageCid:'',
+    pageQuery:'',
     totalPage:null
   },
   paramQuery:{
@@ -33,13 +34,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.data.pageCid = options.cid
-    console.log(options.cid)
+    this.data.pageCid = options.cid||''
+    this.data.pageQuery = options.query||''
     this.getTabList()
   },
   //获取页面数据
  async getTabList(){
    this.paramQuery.cid = this.data.pageCid
+   this.paramQuery.pageQuery = this.data.pageQuery
    const res = await getRequest({
       url:'/goods/search',
       data:this.paramQuery

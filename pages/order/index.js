@@ -5,7 +5,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    tabList: [{
+      value: '全部',
+      active: true,
+      id:0
+    },{
+      value: '待付款',
+      active: false,
+      id:1
+    },{
+      value: '代发货',
+      active: false,
+      id:2
+    },{
+      value: '退款/退货',
+      active: false,
+      id:3
+    }]
   },
 
   /**
@@ -26,41 +42,23 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    //获取页面栈  最长为10
+    const pages = getCurrentPages()
+    const {type} = pages[pages.length-1]['options']
+    //https://api-hmugo-web.itheima.net/api/public/v1/my/orders/all   获取数据
+    //动态修改tab选中状态
+    this.changeActiveIndex(type-1)
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  changeTab(event){
+    const {currentIndex} = event.detail
+    this.changeActiveIndex(currentIndex)
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  changeActiveIndex(currentIndex){
+    this.data.tabList.forEach((item,index)=>{
+      item.active = index === currentIndex? true:false
+    })
+    this.setData({
+      tabList:this.data.tabList
+    })
   }
 })
